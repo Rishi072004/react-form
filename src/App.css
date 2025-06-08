@@ -1,0 +1,272 @@
+/* Hide default scrollbar */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background wrapper */
+.background-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #1c1c1c 0%, #2e003e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Bokeh/Cloudy background circles */
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.32;
+  z-index: 0;
+}
+.bokeh-1 {
+  width: 500px;
+  height: 500px;
+  background: #ff416c;
+  top: 5%;
+  left: 10%;
+}
+.bokeh-2 {
+  width: 400px;
+  height: 400px;
+  background: #ff4b2b;
+  top: 40%;
+  left: 60%;
+}
+.bokeh-3 {
+  width: 350px;
+  height: 350px;
+  background: #e040fb;
+  top: 60%;
+  left: 25%;
+}
+.bokeh-4 {
+  width: 300px;
+  height: 300px;
+  background: #ff6f91;
+  top: 20%;
+  left: 70%;
+}
+.bokeh-5 {
+  width: 250px;
+  height: 250px;
+  background: #ff8fab;
+  top: 70%;
+  left: 80%;
+}
+
+/* Remove previous cloud blob styles */
+.cloud-blob, .cloud-blob-1, .cloud-blob-2, .cloud-blob-3, .cloud-blob-4 {
+  display: none !important;
+}
+
+/* Light beam effect */
+.light-beam {
+  position: absolute;
+  right: -150px;
+  top: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 50%);
+  transform: rotate(30deg);
+  z-index: 0;
+}
+
+/* Texture overlay */
+.texture-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+}
+
+/* Animated grid overlay */
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: -1;
+  animation: moveDots 10s linear infinite;
+}
+
+/* Dot animation */
+@keyframes moveDots {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+/* Enhanced float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+  50% {
+    transform: translate(-15px, 15px) scale(0.9);
+  }
+  75% {
+    transform: translate(-20px, -15px) scale(1.05);
+  }
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* Form container */
+.form-val {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 28px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 440px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border: 2px solid #f41518;
+  animation: slideUp 0.5s ease;
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff4b2b;
+  font-size: 22px;
+}
+
+/* Input and select */
+input,
+select {
+  width: 90%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Labels */
+label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  background: #ff416c;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #ff4b2b;
+  transform: translateY(-1px);
+}
+.count-code{
+  width: 80px;
+}
+.ph-no{
+  width:80%
+   ;
+}
+.pass input{
+  width: 150% ;
+}
+.pass-tab{
+  display: flex;
+  flex-direction: row;
+  gap:120px;
+}
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mobile-friendly adjustments */
+@media screen and (max-height: 500px), (max-width: 400px) {
+  .form-val {
+    max-height: 85vh;
+    padding: 18px 14px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  input,
+  select {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+input.error-input,
+select.error-input {
+  border-color: #dc3545;
+}
